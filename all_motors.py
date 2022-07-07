@@ -98,11 +98,11 @@ class Motor():
 
         else: #to  spin all the motors reverse
             self.PWM1A.ChangeDutyCycle(abs(speed))
-            GPIO.output(self.IN1A, GPIO.LOW) #front left
+            GPIO.output(self.IN1A, GPIO.LOW) #front right
             GPIO.output(self.IN2A, GPIO.HIGH)
 
             self.PWM2A.ChangeDutyCycle(abs(speed))
-            GPIO.output(self.IN3A, GPIO.LOW) #front right
+            GPIO.output(self.IN3A, GPIO.LOW) #front left
             GPIO.output(self.IN4A, GPIO.HIGH)
 
             self.PWM1B.ChangeDutyCycle(abs(speed))
