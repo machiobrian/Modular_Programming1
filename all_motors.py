@@ -77,9 +77,9 @@ class Motor():
         
         
 
-        #to  spin all the motors forward
+        
 
-        if speed > 0:
+        if speed > 0: #to  spin all the motors forward
             self.PWM1A.ChangeDutyCycle(abs(speed))
             GPIO.output(self.IN1A, GPIO.LOW) #front RIGHT
             GPIO.output(self.IN2A, GPIO.HIGH)
@@ -96,7 +96,7 @@ class Motor():
             GPIO.output(self.IN3B, GPIO.LOW) #back left
             GPIO.output(self.IN4B, GPIO.HIGH)
 
-        else:
+        else: #to  spin all the motors reverse
             self.PWM1A.ChangeDutyCycle(abs(speed))
             GPIO.output(self.IN1A, GPIO.LOW) #front left
             GPIO.output(self.IN2A, GPIO.HIGH)
@@ -115,7 +115,7 @@ class Motor():
 
         sleep(t)
 
-    def stop(self, t=0):
+    def stop(self, t=0): #stop wheel rotation
         #Zero all the duty cycles to turn motors off
         self.PWM1A.ChangeDutyCycle(abs(0)) #front left
         self.PWM2A.ChangeDutyCycle(abs(0)) #front right
@@ -126,6 +126,21 @@ class Motor():
         self.PWM2B.ChangeDutyCycle(abs(0)) #back left
         
         sleep(t)
+    
+    def moveRight(): #right key
+        pass
+
+    def moveLeft(): #left key
+        pass
+
+    def rotate_135ccw(): #letter j
+        pass
+
+    def rotate_90cw(): #letter k
+        pass
+    
+    def rotate_180cw():#letter l
+        pass
 
 def main():
         motors.Forward(40, 2) #spins with a pwm of 60 for 3 seconds
@@ -135,3 +150,5 @@ def main():
 if __name__ == '__main__':
     motors = Motor(14,7,1,20,21,15,3,26,19,13,6,4) #pins 
     main()
+
+GPIO.cleanup()
