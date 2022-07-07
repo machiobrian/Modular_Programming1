@@ -1,12 +1,7 @@
 import RPi.GPIO as GPIO
 from time import sleep #we only require the delay
-GPIO.setmode(GPIO.BCM) #broadcom
+GPIO.setmode(GPIO.BCM) #broadcom -> GPIO#
 GPIO.setwarnings(False) #disables all warnings
-
-Ena = 2 #enable pin controls the speed 
-In1 = 3 #Input pins contorl the direction
-In2 = 4
-
 
 #Create a Class instance for the motor control
 
@@ -57,8 +52,8 @@ class Motor():
         turn *= 100
 
         #to invtoduce a variableness in turn, 
-        leftSpeed = speed - turn #50-20
-        rightSpeed = speed + turn# 50 + 20 right speed is higher, move to the right
+        leftSpeed = speed #50-20
+        rightSpeed = speed# 50 + 20 right speed is higher, move to the right
 
         #to limit values btn the required threshold
         if leftSpeed > 100: leftSpeed =100
@@ -71,24 +66,32 @@ class Motor():
         self.pwmA.ChangeDutyCycle(abs(leftSpeed))
         self.pwmB.ChangeDutyCycle(abs(rightSpeed))
 
-        if leftSpeed>0:GPIO.output(self.In1A, GPIO.HIGH);GPIO.output(self.In2A, GPIO.LOW)
-        else: GPIO.output(self.In1A, GPIO.LOW);GPIO.output(self.In2A, GPIO.HIGH)
+        if leftSpeed>0:
+            GPIO.output(self.In1A, GPIO.HIGH)
+            GPIO.output(self.In2A, GPIO.LOW)
+        else: 
+            GPIO.output(self.In1A, GPIO.LOW)
+            GPIO.output(self.In2A, GPIO.HIGH)
 
-        if rightSpeed>0:GPIO.output(self.In1B, GPIO.HIGH);GPIO.output(self.In2B, GPIO.LOW)
-        else: GPIO.output(self.In1B, GPIO.LOW);GPIO.output(self.In2B, GPIO.HIGH)
+        if rightSpeed>0:
+            GPIO.output(self.In1B, GPIO.HIGH)
+            GPIO.output(self.In2B, GPIO.LOW)
+        else:
+            GPIO.output(self.In1B, GPIO.LOW)
+            GPIO.output(self.In2B, GPIO.HIGH)
 
-    def stop(self, t):
-        self.pwmA.ChangeDutyCyce(0)
         sleep(t)
 
-        self.pwmB.ChangeDutyCyce(0)
+    def stop(self, t=0):
+        self.pwmA.ChangeDutyCycle(0)        
+        self.pwmB.ChangeDutyCycle(0)
         sleep(t)
 
 
 
 def main():
-    motor1.moveFoward(60, 2)
-    motor1.stop(2)
+    motor1.move(0.6, 0, 2)
+    motor1.stop(0.1)
 
 #create a motor2 - driver - instance
 # e.g motor2 = Motor(2,3,4,17, 22, 27)
@@ -99,5 +102,6 @@ if __name__ == '__main__': #checks whether this module is running as main
     #if this is true, we run the main function
     #the motor follow these sequences of rotation
     #create a motor1 - driver -  instance
-    motor1 = Motor(2,3,4,17, 22, 27)
-    main() 
+    #motor1 = Motor(3,5,7, 11, 13, 15)
+    motor1 = Motor(2,3,4,17, 27, 22)
+    main()
