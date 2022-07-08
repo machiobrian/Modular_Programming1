@@ -1,11 +1,11 @@
-import motor_module
+import all_motors
 import keyboard_module as kb
 
-from motor_module import Motor
+from all_motors import Motor
 
 
 #create the motor and pass in the parameters
-motor1 = Motor(2,3,4,17, 22, 27)
+motors = Motor(14,7,1,20,21,15,3,26,19,13,6,4)
 
 kb.init()
 def main():
@@ -14,11 +14,23 @@ def main():
     # motor1.moveFoward(0.6, 5)
     # motor1.stop(3)
     if kb.getKey('UP'):
-        motor1.moveFoward(0.6, 0, 0.1) #move upon the keypress time value of max 0.1 s after release
-    elif kb.getKey('DOWN'):
-        motor1.moveFoward(-0.6, 0, 0.1)
+        print('up')
+        motors.Forward(60,0.1) #move upon the keypress time value of max 0.1 s after release
+    
+    if kb.getKey('RIGHT'):
+        print('right')
+        motors.moveRight(60,0.1)
+
+    if kb.getKey('DOWN'):
+        print('down')
+        motors.moveRight(60,0.1)
+
+    if kb.getKey('LEFT'):
+        print('left')
+        motors.moveRight(60,0.1)
+    
     else:
-        motor1.stop(0.1)
+        motors.stop(0.1)
 
 
 
@@ -26,3 +38,6 @@ def main():
 if __name__ == '__main__':
     while True:
         main()
+        
+
+

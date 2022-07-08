@@ -71,13 +71,6 @@ class Motor():
         elif speed < -100: speed = -100 #remember the PWM does not take negative values
 
         #therefore we pass absolute values to all pwm pins
-        
-        
-
-        
-        
-
-        
 
         if speed > 0: #to  spin all the motors forward
             self.PWM1A.ChangeDutyCycle(abs(speed))
@@ -96,22 +89,22 @@ class Motor():
             GPIO.output(self.IN3B, GPIO.LOW) #back left
             GPIO.output(self.IN4B, GPIO.HIGH)
 
-        else: #to  spin all the motors reverse
-            self.PWM1A.ChangeDutyCycle(abs(speed))
-            GPIO.output(self.IN1A, GPIO.LOW) #front right
-            GPIO.output(self.IN2A, GPIO.HIGH)
+        # else: #to  spin all the motors reverse
+        #     self.PWM1A.ChangeDutyCycle(abs(speed))
+        #     GPIO.output(self.IN1A, GPIO.LOW) #front right
+        #     GPIO.output(self.IN2A, GPIO.HIGH)
 
-            self.PWM2A.ChangeDutyCycle(abs(speed))
-            GPIO.output(self.IN3A, GPIO.LOW) #front left
-            GPIO.output(self.IN4A, GPIO.HIGH)
+        #     self.PWM2A.ChangeDutyCycle(abs(speed))
+        #     GPIO.output(self.IN3A, GPIO.LOW) #front left
+        #     GPIO.output(self.IN4A, GPIO.HIGH)
 
-            self.PWM1B.ChangeDutyCycle(abs(speed))
-            GPIO.output(self.IN1B, GPIO.LOW) #back right
-            GPIO.output(self.IN2B, GPIO.HIGH)
+        #     self.PWM1B.ChangeDutyCycle(abs(speed))
+        #     GPIO.output(self.IN1B, GPIO.LOW) #back right
+        #     GPIO.output(self.IN2B, GPIO.HIGH)
 
-            self.PWM2B.ChangeDutyCycle(abs(speed))
-            GPIO.output(self.IN3B, GPIO.LOW) #back left
-            GPIO.output(self.IN4B, GPIO.HIGH)
+        #     self.PWM2B.ChangeDutyCycle(abs(speed))
+        #     GPIO.output(self.IN3B, GPIO.LOW) #back left
+        #     GPIO.output(self.IN4B, GPIO.HIGH)
 
         sleep(t)
 
@@ -127,20 +120,101 @@ class Motor():
         
         sleep(t)
     
-    def moveRight(): #right key
-        pass
+    def moveRight(self, speed=0, t =0): #right key
+        #1. activate pwm
+        #2. set the required pins to HIGH and LOW
+        self.PWM1A.ChangeDutyCycle(abs(speed))
+        GPIO.output(self.IN1A, GPIO.LOW) #front RIGHT
+        GPIO.output(self.IN2A, GPIO.HIGH)
 
-    def moveLeft(): #left key
-        pass
+        self.PWM2A.ChangeDutyCycle(abs(speed))
+        GPIO.output(self.IN3A, GPIO.LOW) #front LEFT
+        GPIO.output(self.IN4A, GPIO.HIGH)
 
-    def rotate_135ccw(): #letter j
-        pass
+        self.PWM1B.ChangeDutyCycle(abs(speed))
+        GPIO.output(self.IN1B, GPIO.HIGH) #back right
+        GPIO.output(self.IN2B, GPIO.LOW)
 
-    def rotate_90cw(): #letter k
-        pass
+        self.PWM2B.ChangeDutyCycle(abs(speed))
+        GPIO.output(self.IN3B, GPIO.LOW) #back left
+        GPIO.output(self.IN4B, GPIO.HIGH)
+
+
+    def moveLeft(self, speed=0, t=0): #left key
+        #1. activate pwm
+        #2. set the required pins to HIGH and LOW
+        self.PWM1A.ChangeDutyCycle(abs(speed))
+        GPIO.output(self.IN1A, GPIO.HIGH) #front RIGHT
+        GPIO.output(self.IN2A, GPIO.LOW)
+
+        self.PWM2A.ChangeDutyCycle(abs(speed))
+        GPIO.output(self.IN3A, GPIO.LOW) #front LEFT
+        GPIO.output(self.IN4A, GPIO.HIGH)
+
+        self.PWM1B.ChangeDutyCycle(abs(speed))
+        GPIO.output(self.IN1B, GPIO.HIGH) #back right
+        GPIO.output(self.IN2B, GPIO.LOW)
+
+        self.PWM2B.ChangeDutyCycle(abs(speed))
+        GPIO.output(self.IN3B, GPIO.HIGH) #back left
+        GPIO.output(self.IN4B, GPIO.LOW)
+
+    def rotate_135ccw(self, speed=0, t=0): #letter j
+        #1. activate pwm
+        #2. set the required pins to HIGH and LOW
+        self.PWM1A.ChangeDutyCycle(abs(speed))
+        GPIO.output(self.IN1A, GPIO.HIGH) #front RIGHT
+        GPIO.output(self.IN2A, GPIO.LOW)
+
+        self.PWM2A.ChangeDutyCycle(abs(speed))
+        GPIO.output(self.IN3A, GPIO.LOW) #front LEFT
+        GPIO.output(self.IN4A, GPIO.HIGH)
+
+        self.PWM1B.ChangeDutyCycle(abs(speed))
+        GPIO.output(self.IN1B, GPIO.HIGH) #back right
+        GPIO.output(self.IN2B, GPIO.LOW)
+
+        self.PWM2B.ChangeDutyCycle(abs(speed))
+        GPIO.output(self.IN3B, GPIO.HIGH) #back left
+        GPIO.output(self.IN4B, GPIO.LOW)
+
+    def rotate_90cw(self, speed=0, t=0): #letter k
+        #1. activate pwm
+        #2. set the required pins to HIGH and LOW
+        self.PWM1A.ChangeDutyCycle(abs(speed))
+        GPIO.output(self.IN1A, GPIO.HIGH) #front RIGHT
+        GPIO.output(self.IN2A, GPIO.LOW)
+
+        self.PWM2A.ChangeDutyCycle(abs(speed))
+        GPIO.output(self.IN3A, GPIO.LOW) #front LEFT
+        GPIO.output(self.IN4A, GPIO.HIGH)
+
+        self.PWM1B.ChangeDutyCycle(abs(speed))
+        GPIO.output(self.IN1B, GPIO.HIGH) #back right
+        GPIO.output(self.IN2B, GPIO.LOW)
+
+        self.PWM2B.ChangeDutyCycle(abs(speed))
+        GPIO.output(self.IN3B, GPIO.HIGH) #back left
+        GPIO.output(self.IN4B, GPIO.LOW)
     
-    def rotate_180cw():#letter l
-        pass
+    def rotate_180cw(self, speed=0, t=0):#letter l
+        #1. activate pwm
+        #2. set the required pins to HIGH and LOW
+        self.PWM1A.ChangeDutyCycle(abs(speed))
+        GPIO.output(self.IN1A, GPIO.HIGH) #front RIGHT
+        GPIO.output(self.IN2A, GPIO.LOW)
+
+        self.PWM2A.ChangeDutyCycle(abs(speed))
+        GPIO.output(self.IN3A, GPIO.LOW) #front LEFT
+        GPIO.output(self.IN4A, GPIO.HIGH)
+
+        self.PWM1B.ChangeDutyCycle(abs(speed))
+        GPIO.output(self.IN1B, GPIO.HIGH) #back right
+        GPIO.output(self.IN2B, GPIO.LOW)
+
+        self.PWM2B.ChangeDutyCycle(abs(speed))
+        GPIO.output(self.IN3B, GPIO.HIGH) #back left
+        GPIO.output(self.IN4B, GPIO.LOW)
 
 def main():
         motors.Forward(40, 2) #spins with a pwm of 60 for 3 seconds
