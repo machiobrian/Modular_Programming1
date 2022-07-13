@@ -1,0 +1,4 @@
+All Motor pins for the two drivers are fixed... No changing them,
+no initializing them, this makes the code less flexible
+
+We need to normalize data for the speeds so as to directly map js values to speed values
