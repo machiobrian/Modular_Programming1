@@ -40,9 +40,22 @@ def getJS(name=''):
 
 
 def main():
-    print(getJS()) #get all the values
-    #print(getJS('axis1','axis2','axis3','axis4'))
-    sleep(0.05)
+    maxThrottle = 75
+    joyVal  = getJS()
+    throttle = joyVal['axis1']*maxThrottle
+
+    # if isinstance(joyVal, int):
+    #     print('joyVal is an int')
+    # else:
+    #     print('nuuuh')
+    # #print(joyVal)
+    # #print(getJS()) #get all the values
+    # #print(getJS('axis1','axis2','axis3','axis4'))
+    # sleep(0.5)
+
+
+    
+    print(throttle)
 
 
 if __name__=='__main__':

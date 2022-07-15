@@ -22,13 +22,20 @@ def getKey(keyName):
     return ans
 
 def main():
+
+    steering = 0
     if getKey('LEFT'):
+        steering = -100
         print('LEFT')
     if getKey ('RIGHT'):
+        steering = 100
         print('RIGHT')
     if getKey ('UP'):
+        steering = 100
         print('UP')
     if getKey ('DOWN'):
+        steering = -100
+        print(steering)
         print('DOWN')
     
 
