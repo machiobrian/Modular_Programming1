@@ -4,10 +4,10 @@ from time import sleep
 pwm_pin = 10
 
 #motor pins
-m_f_l = [9,11]
+m_f_l = [11,9]
 m_f_r = [0,5]
 m_r_r = [6,13]
-m_r_l = [19,26]
+m_r_l = [26,19]
 
 motors = [
     Motor(m_f_l[1], m_f_l[0], pwm=False),
@@ -149,3 +149,4 @@ while True:
     elif (ch in direction.keys()):
         current_dir = direction[ch]
         print('Direction '+current_dir)
+
