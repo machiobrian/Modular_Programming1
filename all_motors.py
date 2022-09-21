@@ -222,7 +222,7 @@ def main():
     
 
 if __name__ == '__main__':
-    motors = Motor(14,7,1,20,21,15,3,26,19,13,6,4) #pins 
+    motors = Motor(10,0,5,11,9,10,10,6,13,26,19,10) #pins 
     main()
 
 GPIO.cleanup()
